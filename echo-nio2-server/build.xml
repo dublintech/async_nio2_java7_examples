@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="project" basedir="." default="help">
+	<!--  ================================================================================= -->
+	<!--  Declarations                                                             			-->
+	<!--  ================================================================================= -->
+	<property name="build.dir" location="${basedir}/target"/>
+	<property name="build.classes" location="${build.dir}/classes"/>
+	<property name="client.dir" location="com\alex\asyncexamples\client"/>
+	<property name="server.dir" location="com\alex\asyncexamples\server"/>
+	<property name="common.dir" location="com\alex\counter"/>
+	<property name="build.jar.dir" location="${build.dir}/jar"/>
+	<property name="report.dir" location="report"/>
+	<property name="src.dir"   location="src/main/java"/>
+	<property name="resources.dir" location="src/main/resources"/>
+	<property name="tests.dir" location="src/test/java"/>
+	<property name="lib.dir"   location="lib"/>
+	<property name="docs.dir"   location="docs"/>
+	<property name="dist.dir"   location="dist"/>
+	<property name="schema.dir" location="schema"/>	
+	<property name="test.class" value="com.alex.asyncexamples.AllTests"/>
+	<property name="junit.jar" value="junit-4.5.jar"/>
+	
+	<path id="compile.classpath">
+		<pathelement location="${build.classes}"/>
+	</path>
+	
+	
+	<path id="junit.task.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="ant-junit.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="lib.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<!--  ================================================================================= -->
+	<!--  Taskdefs 		                                                          			-->
+	<!--  ================================================================================= -->
+	
+	<taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask"
+			classpathref="junit.task.classpath"/>
+
+	<taskdef name="junitreport" classname="org.apache.tools.ant.taskdefs.optional.junit.XMLResultAggregator">
+	<classpath>
+	<pathelement location="${lib.dir}/junit-4.5.jar" />
+	</classpath>
+	</taskdef>
+	<!--  ================================================================================= -->
+	<!--  Targets 		                                                          			-->
+	<!--  ================================================================================= -->
+	<!--  ================================================================================= -->
+	<!--  User Targets 		                                                          		-->
+	<!--  ================================================================================= -->
+	
+	
+	<!--  ================================================================================= -->
+	<!--  Developer Targets 		                                                          			-->
+	<!--  ================================================================================= -->
+	
+	<target name="help">
+	<echo>
+This project contains the following developer targets:
+
+> ant clean			// cleans all compiled src and test code
+> ant compile.all   // cleans and compiles all src and test code, depends=clean
+> ant jar // jars client and server code, depends=clean, compile.all
+> ant junit	// runs junits, depends=clean, compiles.all, jar 
+> ant junitreport // runs the junitreport	
+> ant package // calls clean, compile.all, jar and moves jars into dist directory.
+	</echo>
+	</target>
+
+	<target name="compile.all">
+		<echo message="Compiling src and test code"/>
+		<antcall target="clean"/>
+	    <mkdir dir="${build.classes}"/>
+		<echo message="Compiling common src now..."/>
+		<javac srcdir="${src.dir}" destdir="${build.classes}" includeAntRuntime="false" source="1.7">
+			<exclude name="${src.dir}/com/alex/asyncexamples/client"/>
+			<exclude name="${src.dir}/com/alex/asyncexamples/server" />
+			<classpath refid="lib.classpath"/>
+		</javac>
+		<javac srcdir="${src.dir}" destdir="${build.classes}" includeAntRuntime="false" source="1.7">
+			<exclude name="${src.dir}/com/alex/counter"/>
+			<exclude name="${src.dir}/com/alex/asyncexamples/client" />
+			<classpath refid="lib.classpath"/>
+		</javac>
+		<javac srcdir="${src.dir}" destdir="${build.classes}" includeAntRuntime="false" source="1.7">
+			<exclude name="${src.dir}/com/alex/counter"/>
+			<exclude name="${src.dir}/com/alex/asyncexamples/server" />
+			<classpath refid="lib.classpath"/>
+		</javac>
+		<echo message="Compiling test code now..."/>
+		<javac srcdir="${tests.dir}" destdir="${build.classes}" includeAntRuntime="false" source="1.7">
+			<classpath refid="lib.classpath"/>
+		</javac>
+	</target>
+
+    <target name="jar" depends="clean, compile.all">
+        <mkdir dir="${build.jar.dir}"/>
+    	<!-- move the log4j.properties into the classes dir -->
+    	<copy file="${resources.dir}/log4j.properties" toDir="${build.classes}"/>
+		<jar destfile="${build.jar.dir}/server.jar">
+    		<fileset dir="${build.classes}"
+    			includes="com/alex/asyncexamples/server/*.class,com/alex/counter/*.class,log4j.properties"
+    			excludes="com/alex/asyncexamples/client/*.class"/>
+			<manifest>
+			      <attribute name="Main-Class"
+			            value="com.alex.asyncexamples.server.CounterServerCLI"/>
+				  <attribute name="Class-Path"
+				            value="log4j-1.2.16.jar"/>
+			</manifest>
+		</jar>
+    	<jar jarfile="${build.jar.dir}/client.jar">
+    		<fileset dir="${build.classes}"
+    			includes="com/alex/asyncexamples/client/*.class,com/alex/counter/*.class,log4j.properties"
+    			excludes="com/alex/asyncexamples/server/*.class"/>
+			<manifest>
+			      <attribute name="Main-Class"
+			            value="com.alex.asyncexamples.client.CounterClientCLI"/>
+				  <attribute name="Class-Path"
+					            value="log4j-1.2.16.jar"/>
+			</manifest>
+    	</jar>
+    </target>
+
+    <target name="run.client">
+        <java fork="true" classname="com.alex.asyncexamples.client.CounterClientCLI">
+        	<classpath>
+        		<path refid="lib.classpath"/>
+        		<pathelement path="${build.jar.dir}/client.jar"/>
+        	</classpath>	   
+        </java>
+    </target>
+	
+    <target name="run.server">
+        <java fork="true" classname="com.alex.asyncexamples.server.CounterServerCLI">
+        	<classpath>
+        		<path refid="lib.classpath"/>
+        		<pathelement path="${build.jar.dir}/server.jar"/>
+        	</classpath>	   
+        </java>
+    </target>
+	
+	<target name="junit" depends="clean, compile.all, jar">
+		<mkdir dir="${report.dir}"/>
+		<echo message="running junits..."/>
+		<junit printsummary="yes" haltonerror="true" maxMemory="512m">
+			<classpath>
+				<path refid="lib.classpath"/>
+				<pathelement path="${build.classes}"/>
+			</classpath>
+			<formatter type="xml"/>
+			<batchtest fork="yes" todir="${report.dir}">		        
+				<fileset dir="${tests.dir}">
+					<include name="**/*Test*.java"/>
+					<exclude name="**/AllTests.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+		
+	</target>
+	
+
+    <target name="junitreport">
+        <junitreport todir="${report.dir}">
+            <fileset dir=".">
+            	<include name="**/*TEST-*.xml"/>
+            </fileset>
+            <report todir="${report.dir}"/>
+        </junitreport>
+    </target>
+	
+	<target name="clean">
+		<echo message="cleaning build dir=${build.dir}"/>
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="package" depends="clean,compile.all,jar">
+		<copy toDir="${dist.dir}/client">	
+			<fileset dir="${lib.dir}">
+				<include name="*log4j*.jar"/>
+			</fileset>
+		</copy>
+		<copy toDir="${dist.dir}/client">
+			<fileset dir="${build.jar.dir}">
+				<include name="client.jar"/>
+			</fileset>
+		</copy>
+		<!-- now do server-->
+		<copy toDir="${dist.dir}/server">	
+			<fileset dir="${lib.dir}">
+				<include name="*log4j*.jar"/>
+			</fileset>
+		</copy>
+		<copy toDir="${dist.dir}/server">
+			<fileset dir="${build.jar.dir}">
+				<include name="server.jar"/>
+			</fileset>
+		</copy>
+	</target>
+	<!--  ================================================================================= -->
+	<!--  Debug targets 		                                                          			-->
+	<!--  ================================================================================= -->
+	
+	<target name="debug">
+		<echoproperties/>
+	</target>
+	
+	<!--  Outputs classpaths to console. Useful for debugging etc. -->
+	<target name="echo.classpaths">
+		<property name="compile.classpath.string" refid="compile.classpath"/>
+		<echo message="compile.classpath= ${compile.classpath.string}"/>
+		
+		<property name="lib.classpath.string" refid="lib.classpath"/>
+		<echo message="lib.classpath= ${lib.classpath.string}"/>
+			
+		<echo message="common.dir=${common.dir}"/>
+		
+		<property name="test.classpath.string" refid="test.classpath"/>
+		<echo message="test.classpath= ${test.classpath.string}"/>
+		
+		<property name="junit.task.classpath.string" refid="junit.task.classpath"/>
+		<echo message="junit.classpath= ${junit.task.classpath.string}"/>
+	</target>
+	
+	
+</project>

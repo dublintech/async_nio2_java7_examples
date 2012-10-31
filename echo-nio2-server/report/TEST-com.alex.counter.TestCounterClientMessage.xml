@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Alex-PC" name="com.alex.counter.TestCounterClientMessage" tests="2" time="0.191" timestamp="2012-10-29T17:43:34">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="lib.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\lib" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="docs.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\docs" />
+    <property name="os.name" value="Windows 7" />
+    <property name="ant.file.project" value="C:\Users\Alex\workspaces\NewBay\counter-server\build.xml" />
+    <property name="sun.boot.class.path" value="C:\jdk1.7.0_07\jre\lib\resources.jar;C:\jdk1.7.0_07\jre\lib\rt.jar;C:\jdk1.7.0_07\jre\lib\sunrsasign.jar;C:\jdk1.7.0_07\jre\lib\jsse.jar;C:\jdk1.7.0_07\jre\lib\jce.jar;C:\jdk1.7.0_07\jre\lib\charsets.jar;C:\jdk1.7.0_07\jre\lib\jfr.jar;C:\jdk1.7.0_07\jre\classes" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="C:\tools\ant" />
+    <property name="java.runtime.version" value="1.7.0_07-b11" />
+    <property name="user.name" value="Alex" />
+    <property name="build.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\target" />
+    <property name="user.language" value="en" />
+    <property name="sun.boot.library.path" value="C:\jdk1.7.0_07\jre\bin" />
+    <property name="ant.project.name" value="project" />
+    <property name="java.version" value="1.7.0_07" />
+    <property name="user.timezone" value="" />
+    <property name="resources.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\src\main\resources" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="C:\jdk1.7.0_07\jre\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="51.0" />
+    <property name="user.country" value="IE" />
+    <property name="java.home" value="C:\jdk1.7.0_07\jre" />
+    <property name="dist.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\dist" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="ant.file" value="C:\Users\Alex\workspaces\NewBay\counter-server\build.xml" />
+    <property name="os.version" value="6.1" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="23.3-b01" />
+    <property name="report.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\report" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="C:\tools\ant\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="user.script" value="" />
+    <property name="build.jar.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\target\jar" />
+    <property name="user.home" value="C:\Users\Alex" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="C:\jdk1.7.0_07\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\system32\wbem;C:\Windows\system32\windowspowershell\v1.0\;c:\program files\dell\dell wireless wlan card;c:\program files (x86)\common files\roxio shared\dllshared\;c:\program files\ibm\gsk8\lib64;C:\PROGRA~1\IBM\SQLLIB\BIN;C:\PROGRA~1\IBM\SQLLIB\FUNCTION;C:\PROGRA~1\IBM\SQLLIB\SAMPLES\REPL;C:\Program Files (x86)\QuickTime\QTSystem\;C:\jdk1.7.0_07\bin;C:\tools\ant\bin;C:\cygwin\bin;C:\tools\apache-maven-3.0.3\bin;C:\Ruby193\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\sbt\;%APPDATA%\Python\Scripts;." />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.alex.counter.TestCounterClientMessage filtertrace=true haltOnError=true haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=false outputtoformatters=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Alex\workspaces\NewBay\counter-server\report\TEST-com.alex.counter.TestCounterClientMessage.xml crashfile=C:\Users\Alex\workspaces\NewBay\counter-server\junitvmwatcher3214556988348150340.properties propsfile=C:\Users\Alex\workspaces\NewBay\counter-server\junit1528995869957489202.properties" />
+    <property name="java.class.path" value="C:\Users\Alex\workspaces\NewBay\counter-server\lib\junit-4.10.jar;C:\Users\Alex\workspaces\NewBay\counter-server\lib\log4j-1.2.16.jar;C:\Users\Alex\workspaces\NewBay\counter-server\lib\org.hamcrest.core_1.1.0.v20090501071000.jar;C:\Users\Alex\workspaces\NewBay\counter-server\target\classes;C:\Users\Alex\workspaces\NewBay\counter-server;C:\PROGRA~1\IBM\SQLLIB\java\db2java.zip;C:\PROGRA~1\IBM\SQLLIB\java\db2jcc.jar;C:\PROGRA~1\IBM\SQLLIB\java\sqlj.zip;C:\PROGRA~1\IBM\SQLLIB\java\db2jcc_license_cu.jar;C:\PROGRA~1\IBM\SQLLIB\bin;C:\tools\ant\lib\ant-launcher.jar;C:\tools\ant\lib\ant.jar;C:\tools\ant\lib\ant-junit.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
+    <property name="client.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\com\alex\asyncexamples\client" />
+    <property name="test.class" value="com.alex.asyncexamples.AllTests" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="junit.jar" value="junit-4.5.jar" />
+    <property name="build.classes" value="C:\Users\Alex\workspaces\NewBay\counter-server\target\classes" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="Service Pack 1" />
+    <property name="java.io.tmpdir" value="C:\Users\Alex\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="C:\jdk1.7.0_07\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="common.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\com\alex\counter" />
+    <property name="tests.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\src\test\java" />
+    <property name="user.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="C:\Users\Alex\workspaces\NewBay\counter-server" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="C:\tools\ant\lib\ant.jar" />
+    <property name="schema.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\schema" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="server.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\com\alex\asyncexamples\server" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="src.dir" value="C:\Users\Alex\workspaces\NewBay\counter-server\src\main\java" />
+  </properties>
+  <testcase classname="com.alex.counter.TestCounterClientMessage" name="negTestCounterClientMessage" time="0.006" />
+  <testcase classname="com.alex.counter.TestCounterClientMessage" name="testCounterClientMessage" time="0.001" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
